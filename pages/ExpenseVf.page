@@ -1,0 +1,42 @@
+<apex:page standardController="Expense__c" renderAs="pdf" extensions="ExpenseEXT" >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h4>Expense details during {!Expense__c.Event__c} </h4>
+  <html>
+        <head/>
+        <body>
+        <!-- Table to print event details -->
+            <table Class="center" >
+                <tr>
+                    <td>EVENT:</td>
+                    <td>{!Expense__c.Event__c}</td>
+              </tr>
+               <tr>
+                    <td>EVENT DATE:</td>
+                    <td>{!Expense__c.Date__c} </td>
+              </tr>
+              <tr>
+                 <td>TOTAL AMOUNT:</td>
+                 <td>{!Expense__c.TotalAmount__c}</td>
+              </tr>
+             
+              
+             
+              
+            
+            </table> 
+           <h3>Details of contrbuting members-- </h3> 
+      <!-- Table to print contributing members detail -->      
+      <apex:repeat value="{!ExpMembers}" var="i">
+    <tr> 
+        <td> {!i.Member__r.FirstName__c} </td>
+        <td> {!i.Member__r.LastName__c}: </td>
+        <td> {!i.ContributionAmount__c} </td>
+    
+    </tr>
+    </apex:repeat>     
+        </body>
+    </html>
+    
+ 
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

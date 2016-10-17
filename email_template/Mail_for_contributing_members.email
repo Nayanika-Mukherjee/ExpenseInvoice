@@ -1,0 +1,44 @@
+<messaging:emailTemplate subject="Post event mail" recipientType="User" relatedToType="ExpenseMember__c">
+<messaging:attachment renderAs="PDF" filename="PostEvent.pdf">
+    <html>
+        <body>
+              Hi Thank U {!relatedTo.Member__r.FirstName__c}
+               {!relatedTo.Member__r.LastName__c} for the Contribution of Rs{!relatedTo.ContributionAmount__c}
+                    The Total Amount for the {!relatedTo.Expense__r.Event__c} 
+                    Expense is {!relatedTo.Expense__r.TotalAmount__c} on {!relatedTo.Expense__r.Date__c} 
+                    
+                    
+ <table>
+  <tr>
+    <td>Name: </td>  
+    <td>{!relatedTo.Member__r.FirstName__c}</td>
+    <td>{!relatedTo.Member__r.LastName__c}</td>
+   </tr>
+   <tr>
+   <td>Event: </td>
+   <td>{!relatedTo.Expense__r.Event__c}</td>
+   </tr>
+  <tr>
+    <td>Total Amount: </td>
+    <td>Rs{!relatedTo.Expense__r.TotalAmount__c}</td>
+  </tr>
+  <tr>
+    <td>Your Contribution: </td>
+    <td>Rs{!relatedTo.ContributionAmount__c}</td>
+  </tr>
+</table>
+        </body>
+    </html>
+
+
+
+
+</messaging:attachment> 
+<messaging:plainTextEmailBody >
+Dear {!relatedTo.Member__r.FirstName__c},
+
+Thanks for joining us in the event {!relatedTo.Expense__r.Event__c}. Please find the attachment.
+
+Thank you
+</messaging:plainTextEmailBody>
+</messaging:emailTemplate>
